@@ -24,7 +24,7 @@ class BlackJack
     # atarts game and player actions 
     def start_game 
         user_input = false
-        while user_input != "stand"
+        while user_input != @prompt.select("stand")
             print_hands
             @prompt.select("Would you like to", %w(Hit, Stand)).colorize(:black ).colorize( :background => :white)
             print_hands
