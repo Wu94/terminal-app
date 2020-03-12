@@ -34,7 +34,7 @@ puts
             print_hands
             if total_hand_value(@player_hand) > 21 
                 puts "#{@player_name} busts, better luck next time".colorize(:red)
-                puts "Please play again :)"
+                puts "Please play again :)".colorize(:yellow)
                 return
             end
             user_input = @prompt.select "Would you like to", ["Hit", "Stand"]
@@ -63,7 +63,7 @@ puts
             puts "Dealer Busts, Congrantulations you WIN!".colorize(:green)
             puts "Play again to WIN more?".colorize(:yellow)
         elsif total_hand_value(@player_hand) == total_hand_value(@dealer_hand)
-            puts "THIS NEVER HAPPENS ITS A TIE!".colorize(:green)
+            puts "THIS NEVER HAPPENS, ITS A TIE!".colorize(:green)
             puts "No one lost, play again?".colorize(:yellow)
         elsif total_hand_value(@player_hand) > total_hand_value(@dealer_hand)
             puts "Congrantulations, Player WINS!".colorize(:green)
