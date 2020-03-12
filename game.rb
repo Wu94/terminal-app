@@ -1,3 +1,6 @@
+#gems
+require 'colorize'
+
 #simple blackjack game 
 class BlackJack 
     def initialize  
@@ -11,7 +14,7 @@ class BlackJack
     end
     # prints out current hand and value 
     def print_hands
-        puts "player hand: #{@player_hand} total value: #{total_hand_value(@player_hand)}"
+        puts "player hand: #{@player_hand} total value: #{total_hand_value(@player_hand)}".colorize(:blue)
         puts "Dealer hand: #{@dealer_hand} total value: #{total_hand_value(@dealer_hand)}"
     end
     # atarts game and player actions 
