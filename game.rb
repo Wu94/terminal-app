@@ -19,18 +19,18 @@ class BlackJack
     end
     # prints out current hand and value 
     def print_hands
-        puts "player hand: #{@player_hand} total value: #{total_hand_value(@player_hand)}".colorize(:blue)
-        puts "Dealer hand: #{@dealer_hand} total value: #{total_hand_value(@dealer_hand)}"
+        puts "player hand: #{@player_hand} total value: #{total_hand_value(@player_hand)}".colorize(:yellow)
+        puts "Dealer hand: #{@dealer_hand} total value: #{total_hand_value(@dealer_hand)}".colorize(:light_blue)
     end
     puts "Welcome to BlackJack"
     # atarts game and player actions 
     def start_game 
         user_input = false
         while user_input != "stand"
-            puts "Would you like to: Hit or Stand"
+            puts "Would you like to: Hit or Stand".colorize(:black ).colorize( :background => :white)
             print_hands
             if total_hand_value(@player_hand) > 21 
-                puts "Player busts, better luck next time"
+                puts "Player busts, better luck next time".colorize(:light_red)
                 puts "Please play again :)"
                 return
             end
@@ -40,7 +40,7 @@ class BlackJack
             elsif user_input == "stand"
                 puts "Player stands, Dealers turn"
             else
-                puts "Something went wrong here, please try hit or stand"
+                puts "Something went wrong here, please try hit or stand".colorize(:red)
             end
         end
         dealers_turn
@@ -57,16 +57,16 @@ class BlackJack
     def game_conditions 
         print_hands
         if total_hand_value(@dealer_hand) > 21
-            puts "Dealer Busts, Congrantulations you WIN!"
+            puts "Dealer Busts, Congrantulations you WIN!".colorize(:green)
             puts "Play again to WIN more?"
         elsif total_hand_value(@player_hand) == total_hand_value(@dealer_hand)
-            puts "THIS NEVER HAPPENS ITS A TIE!"
+            puts "THIS NEVER HAPPENS ITS A TIE!".colorize(:green)
             puts "No one lost, play again?"
         elsif total_hand_value(@player_hand) > total_hand_value(@dealer_hand)
-            puts "Congrantulations, Player WINS!"
+            puts "Congrantulations, Player WINS!".colorize(:green)
             puts "Play again to WIN more?"
         elsif total_hand_value(@player_hand) < total_hand_value(@dealer_hand)
-            puts "Dealer WINS!, Unlucky :("
+            puts "Dealer WINS!, Unlucky :(".colorize(:light_red)
             puts "Please play again :)"
         else
             
