@@ -1,7 +1,7 @@
 #gems
 require 'colorize'
-# require "tty-prompt"
-# prompt = TTY::Prompt.new
+require 'tty-prompt'
+prompt = TTY::Prompt.new
 # require 'figlet'
 # font = Figlet::Font.new('big.flf')
 # figlet = Figlet::Typesetter.new(font)
