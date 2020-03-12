@@ -25,17 +25,17 @@ class BlackJack
     def start_game 
         user_input = false
         while user_input != "stand"
-            prompt.select("Would you like to: Hit or Stand").colorize(:black ).colorize( :background => :white)
+            print_hands
+            @prompt.select("Would you like to", %w(Hit, Stand)).colorize(:black ).colorize( :background => :white)
             print_hands
             if total_hand_value(@player_hand) > 21 
                 puts "Player busts, better luck next time".colorize(:light_red)
                 puts "Please play again :)"
                 return
             end
-            user_input = gets.chomp
-            if user_input == "hit"
+            if user_input.downcase == "hit"
                 hit(@player_hand)
-            elsif user_input == "stand"
+            elsif user_input.downcase == "stand"
                 puts "Player stands, Dealers turn"
             else
                 puts "Something went wrong here, please try hit or stand".colorize(:red)
