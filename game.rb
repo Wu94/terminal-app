@@ -23,7 +23,7 @@ class BlackJack
     end
     puts a.asciify("Welcome to BlackJack").colorize(:green)
     puts "HOW TO PLAY: The objective is to beat the dealer by the player having a higher hand value that is under 21. 
-At the start, you will be dealt a hand and the player have a choice to hit whihc draws a new card into 
+At the start, you will be dealt a hand and the player will have a choice to hit which draws a new card into 
 player hand or stand which will start the dealers turn to try to beat your hand"
 puts 
     # atarts game and player actions 
@@ -78,7 +78,7 @@ puts
     def get_player_name
         @player_name = @prompt.ask('What is your name?')  
         until @player_name.match(/^[a-zA-Z\d\s]*$/)
-          puts "Your name can't have symbols or numbers, please try again"
+          puts "Your name can't have symbols, please try again"
           @player_name = @prompt.ask('What is your name?')
         end
       end
