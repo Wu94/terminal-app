@@ -1,10 +1,9 @@
 #gems
 require 'colorize'
 require 'tty-prompt'
+require 'artii'
+a = Artii::Base.new 
 prompt = TTY::Prompt.new
-# require 'figlet'
-# font = Figlet::Font.new('big.flf')
-# figlet = Figlet::Typesetter.new(font)
 
 #simple blackjack game 
 class BlackJack 
@@ -22,7 +21,7 @@ class BlackJack
         puts "player hand: #{@player_hand} total value: #{total_hand_value(@player_hand)}".colorize(:yellow)
         puts "Dealer hand: #{@dealer_hand} total value: #{total_hand_value(@dealer_hand)}".colorize(:light_blue)
     end
-    puts "Welcome to BlackJack"
+    a.asciify("Welcome to BlackJack")
     # atarts game and player actions 
     def start_game 
         user_input = false
