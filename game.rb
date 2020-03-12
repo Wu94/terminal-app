@@ -12,31 +12,36 @@ class BlackJack
         @player_hand = deal 
         @dealer_hand = deal
         @prompt = TTY::Prompt.new
+        @player_name = ""
     start_game
     end
     a = Artii::Base.new 
     # prints out current hand and value 
     def print_hands
-        puts "player hand: #{@player_hand} total value: #{total_hand_value(@player_hand)}".colorize(:yellow)
+        puts "#{@player_name}'s hand: #{@player_hand} total value: #{total_hand_value(@player_hand)}".colorize(:yellow)
         puts "Dealer hand: #{@dealer_hand} total value: #{total_hand_value(@dealer_hand)}".colorize(:light_blue)
     end
     puts a.asciify("Welcome to BlackJack").colorize(:green)
+    puts "HOW TO PLAY: The objective is to beat the dealer by the player having a higher hand value that is under 21. 
+At the start, you will be dealt a hand and the player have a choice to hit whihc draws a new card into 
+player hand or stand which will start the dealers turn to try to beat your hand"
+puts 
     # atarts game and player actions 
     def start_game 
+        get_player_name
         user_input = ""
-        while user_input != "stand"
-            print_hands
-            user_input = @prompt.select("Would you like to", %w(Hit, Stand)).colorize(:black ).colorize( :background => :white)
+        while user_input != "Stand"
             print_hands
             if total_hand_value(@player_hand) > 21 
-                puts "Player busts, better luck next time".colorize(:light_red)
+                puts "#{@player_name} busts, better luck next time".colorize(:red)
                 puts "Please play again :)"
                 return
             end
+            user_input = @prompt.select "Would you like to", ["Hit", "Stand"]
             if user_input.downcase == "hit"
                 hit(@player_hand)
             elsif user_input.downcase == "stand"
-                puts "Player stands, Dealers turn"
+                puts "#{@player_name} stands, Dealers turn"
             else
                 puts "Something went wrong here, please try hit or stand".colorize(:red)
             end
@@ -56,20 +61,27 @@ class BlackJack
         print_hands
         if total_hand_value(@dealer_hand) > 21
             puts "Dealer Busts, Congrantulations you WIN!".colorize(:green)
-            puts "Play again to WIN more?"
+            puts "Play again to WIN more?".colorize(:yellow)
         elsif total_hand_value(@player_hand) == total_hand_value(@dealer_hand)
             puts "THIS NEVER HAPPENS ITS A TIE!".colorize(:green)
-            puts "No one lost, play again?"
+            puts "No one lost, play again?".colorize(:yellow)
         elsif total_hand_value(@player_hand) > total_hand_value(@dealer_hand)
             puts "Congrantulations, Player WINS!".colorize(:green)
-            puts "Play again to WIN more?"
+            puts "Play again to WIN more?".colorize(:yellow)
         elsif total_hand_value(@player_hand) < total_hand_value(@dealer_hand)
-            puts "Dealer WINS!, Unlucky :(".colorize(:light_red)
-            puts "Please play again :)"
-        else
-            
+            puts "Dealer WINS!, Unlucky :(".colorize(:red)
+            puts "Please play again :)".colorize(:yellow)
+        else     
         end
     end
+    # allows user to name the player 
+    def get_player_name
+        @player_name = @prompt.ask('What is your name?')  
+        until @player_name.match(/^[a-zA-Z\d\s]*$/)
+          puts "Your name can't have symbols or numbers, please try again"
+          @player_name = @prompt.ask('What is your name?')
+        end
+      end
     # draws random card from deck that hasnt been dealt     
     def hit (hand)
         hand.push(get_random_card)
@@ -91,7 +103,6 @@ class BlackJack
         @deck[rand(@deck.length)]
     end
 end
-
 BlackJack.new 
 
 #improvements 
@@ -100,4 +111,6 @@ BlackJack.new
 # have jack, queen, king instead of three 10s 
 # have A card to have value of 11 or 1 depending if player busts 
 # give cards suits to represent a deck of 52 cards as atm dry priciple has been breached 
-# gems colorzie and tty prompt 
+# betting system 
+# to have 6 decks instead of 1 to counter card counting 
+# have a play again opion, so you dont need to type your name every time you start a new game
