@@ -2,7 +2,6 @@
 require 'colorize'
 require 'tty-prompt'
 require 'artii'
-a = Artii::Base.new 
 prompt = TTY::Prompt.new
 
 #simple blackjack game 
@@ -15,7 +14,10 @@ class BlackJack
         @player_hand = deal 
         @dealer_hand = deal
     start_game
+
     end
+
+    a = Artii::Base.new 
     # prints out current hand and value 
     def print_hands
         puts "player hand: #{@player_hand} total value: #{total_hand_value(@player_hand)}".colorize(:yellow)
