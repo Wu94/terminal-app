@@ -2,8 +2,6 @@
 require 'colorize'
 require 'tty-prompt'
 require 'artii'
-prompt = TTY::Prompt.new
-
 #simple blackjack game 
 class BlackJack 
     def initialize  
@@ -13,22 +11,21 @@ class BlackJack
                 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
         @player_hand = deal 
         @dealer_hand = deal
+        @prompt = TTY::Prompt.new
     start_game
-
     end
-
     a = Artii::Base.new 
     # prints out current hand and value 
     def print_hands
         puts "player hand: #{@player_hand} total value: #{total_hand_value(@player_hand)}".colorize(:yellow)
         puts "Dealer hand: #{@dealer_hand} total value: #{total_hand_value(@dealer_hand)}".colorize(:light_blue)
     end
-    a.asciify("Welcome to BlackJack")
+    puts a.asciify("Welcome to BlackJack").colorize(:green)
     # atarts game and player actions 
     def start_game 
         user_input = false
         while user_input != "stand"
-            puts "Would you like to: Hit or Stand".colorize(:black ).colorize( :background => :white)
+            prompt.select("Would you like to: Hit or Stand").colorize(:black ).colorize( :background => :white)
             print_hands
             if total_hand_value(@player_hand) > 21 
                 puts "Player busts, better luck next time".colorize(:light_red)
