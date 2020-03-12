@@ -23,10 +23,10 @@ class BlackJack
     puts a.asciify("Welcome to BlackJack").colorize(:green)
     # atarts game and player actions 
     def start_game 
-        user_input = false
-        while user_input != @prompt.select("stand")
+        user_input = ""
+        while user_input != "stand"
             print_hands
-            @prompt.select("Would you like to", %w(Hit, Stand)).colorize(:black ).colorize( :background => :white)
+            user_input = @prompt.select("Would you like to", %w(Hit, Stand)).colorize(:black ).colorize( :background => :white)
             print_hands
             if total_hand_value(@player_hand) > 21 
                 puts "Player busts, better luck next time".colorize(:light_red)
