@@ -2,19 +2,19 @@ Hello user, please follow the steps to be able to have the application fully fun
 Please install the following gems:
 - gem install colorize https://github.com/fazibear/colorize
 - gem install artii https://github.com/miketierney/artii
-- 
+- gem install tty-prompt https://github.com/piotrmurach/tty-prompt#ttyprompt-
 System Requirments:
--
--
--
-Hardware requirments.
--
--
--
+- MacOS, Linux
+- A terminal 
+- The latest ruby 2.7.0
+Hardware requirments:
+- CPU 1 Core
+- RAM 2GB
+- HDD 5GB
 
-Github link of the application  
+Github link: https://github.com/Wu94/terminal-app/tree/readme
 
-description of the game:
+Description of the game:
 The objective of black jack is to win against the dealer. The win condition is to acquire a hand value that is greater than the dealers but it must not exceed the value of 21. Black jack consists of a deck of 52 cards, where each card has a certain value. The cards 2 to 10 will have the same value as the card displays, while the face cards king, queen and jack have a value of 10. The ace card however has a value of 11 or 1 as the player has a choice to commit one of values of the ace card. For example if the player hand has cards jack, 10 and ace, the value of the players hand will be 21 as if ace value was 11 it will make the player hand value 31 which would make the player to lose.
 
 how to play: The objective is to beat the dealer by the player having a higher hand value that is under 21. 
